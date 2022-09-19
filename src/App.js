@@ -1,5 +1,8 @@
 import {React, useState} from 'react';
 import {v4 as uuid} from 'uuid';
+/* import TextField from "@mui/material/TextField"; */
+import './App.css';
+/* import List from './components/List'; */
 
 function App()
 {
@@ -57,13 +60,23 @@ function App()
 
 
   /* para buscar tareas*/
-  const searchTask = (userInput) =>
+  const searchTask = () =>
   {
-    const list = defaultList.filter((item) => userInput === defaultList.content)
-    console.log(list)
+
+    const buscado = defaultList.filter((item) =>
+      {
+        if(searchTask == "") {return item}
+        else if(item.content.toLowerCase().includes(searchTask.toLowerCase()))  {return item}
+      })
+
+      return (
+        <ul>
+          {buscado.map((item) => ( <li key={item.id}> {item.content} </li> ))}
+        </ul>
+      )
   }
 
-
+  
   return (
     <div>
 
@@ -71,6 +84,7 @@ function App()
 
       <input
         type="text"
+        placeholder="Type here"
         value={userInput}
         onChange={(event) => setUserInput(event.target.value)}>
       </input>
@@ -78,6 +92,8 @@ function App()
       <button onClick={() => addTask()}> + </button>
       <button onClick={() => searchTask()}> Search </button>
       <button onClick={() => deleteTask()}> Delete </button>
+
+      {/* <List/> */}
 
       {/* para imprimir la lista */}
       <ul>
@@ -89,8 +105,7 @@ function App()
       </ul>
 
     </div>
-      
+
   )
 }
-
 export default App
