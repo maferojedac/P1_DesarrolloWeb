@@ -39,7 +39,7 @@ function App()
 
 
   /* componente para agregar tareas */
-  const addTask = () => {}
+  const addTask = () =>
   {
     /* objeto de una nueva tarea */
     const newTask = 
@@ -55,15 +55,14 @@ function App()
     setUserInput("")
   }
 
-/* 
-  /* para buscar tareas
-  const searchTask = (setUserInput, {defaultList.id} ) =>
-  {
-    const list = defaultList.filter((item) => item.id === id)
-  }
- */
 
-  
+  /* para buscar tareas*/
+  const searchTask = (userInput) =>
+  {
+    const list = defaultList.filter((item) => userInput === defaultList.content)
+    console.log(list)
+  }
+
 
   return (
     <div>
@@ -76,8 +75,8 @@ function App()
         onChange={(event) => setUserInput(event.target.value)}>
       </input>
 
-      <button onClick={() => addTask(userInput)}> + </button>
-      {/* <button onClick={searchTask}> Search </button> */}
+      <button onClick={() => addTask}> + </button>
+      <button onClick={() => searchTask}> Search </button>
       <button onClick={() => deleteTask}> Delete </button>
 
       {/* para imprimir la lista */}
