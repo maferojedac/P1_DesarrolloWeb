@@ -75,9 +75,9 @@ function App()
         onChange={(event) => setUserInput(event.target.value)}>
       </input>
 
-      <button onClick={() => addTask}> + </button>
-      <button onClick={() => searchTask}> Search </button>
-      <button onClick={() => deleteTask}> Delete </button>
+      <button onClick={() => addTask()}> + </button>
+      <button onClick={() => searchTask()}> Search </button>
+      <button onClick={() => deleteTask()}> Delete </button>
 
       {/* para imprimir la lista */}
       <ul>
